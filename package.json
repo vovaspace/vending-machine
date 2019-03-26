@@ -1,0 +1,88 @@
+{
+  "name": "vending-machine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "author": "Vova Space <hi@vovaspace.com> (https://github.com/vovaspace)",
+  "license": "ISC",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "clean": "gulp clean",
+    "make-block": "babel-node scripts/make-block.js",
+    "lint:scripts": "eslint src",
+    "lint:styles": "stylelint src/**/**/*.scss",
+    "lint": "npm-run-all -p lint:*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "babel-node scripts/preventMasterCommit.js && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.scss": [
+        "stylelint --fix",
+        "git add"
+      ],
+      "*js": [
+        "eslint --fix",
+        "git add"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "focus-visible": "^4.1.5",
+    "masonry-layout": "^4.2.2",
+    "normalize.css": "^8.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-transform-runtime": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/register": "^7.4.0",
+    "babel-loader": "^8.0.5",
+    "browser-sync": "^2.18.12",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "git-branch-is": "^2.1.0",
+    "gulp": "^4.0.0",
+    "gulp-add-src": "^1.0.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-csso": "^3.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-file": "^0.4.0",
+    "gulp-flatten": "^0.4.0",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-notify": "^3.0.0",
+    "gulp-pug": "^4.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.1",
+    "gulp-sass-glob": "^1.0.8",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-svg-sprites": "^4.1.1",
+    "gulp-ttf2woff": "^1.1.1",
+    "gulp-ttf2woff2": "^2.0.2",
+    "gulp.spritesmith": "^6.5.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "npm-run-all": "^4.1.5",
+    "require-dir": "^1.2.0",
+    "rimraf": "^2.6.1",
+    "stylelint": "^9.10.1",
+    "stylelint-at-rule-no-children": "^0.3.1",
+    "stylelint-order": "^2.1.0",
+    "webpack": "^4.29.6",
+    "webpack-stream": "^5.2.1",
+    "yargs": "^12.0.5"
+  }
+}

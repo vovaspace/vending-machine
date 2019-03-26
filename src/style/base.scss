@@ -1,0 +1,27 @@
+html {
+  // Border-box Fix
+  box-sizing: border-box;
+
+  font-size: 16px;
+  font-family: $primary-font-family;
+}
+
+
+// Border-box Fix
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+body {
+  min-width: rem(840);
+  margin: 0;
+  padding: 0;
+
+  background-color: #141a0d;
+}
+
+
+button {
+  cursor: pointer;
+}
