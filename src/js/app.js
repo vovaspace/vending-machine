@@ -5,10 +5,8 @@ import BanknoteStorage from './BanknoteStorage';
 import CoinStorage from './CoinStorage';
 import Output from './Output';
 import parseChoice from './parseChoice';
-import prerender from './prerender';
 import Preloader from './Preloader';
 import load from './load';
-import render from './render';
 
 const products = [
   new Product(1, 'Cola', 'Cold drink', 130, 50),
@@ -38,14 +36,30 @@ const output = new Output();
 
 const preloader = new Preloader();
 
-async function init() {
-  await prerender(showcaseEl, controlPanelEl, moneyForm, choiceForm, output, preloader);
-  await load(preloader);
-  await render(showcaseEl, controlPanelEl, moneyForm, choiceForm, output, preloader, productList);
-  moneyForm.turnOn();
-}
+(async function init() {
+  await new Promise((resolve) => {
+    const preloaderEl = preloader.render();
+    preloaderEl.classList.add('page__preloader');
+    showcaseEl.appendChild(preloaderEl);
+    controlPanelEl.appendChild(moneyForm.prerender());
+    controlPanelEl.appendChild(choiceForm.prerender());
+    controlPanelEl.appendChild(output.prerender());
+    resolve();
+  });
 
-init();
+  await load(preloader);
+
+  await new Promise((resolve) => {
+    moneyForm.render();
+    choiceForm.render();
+    output.render();
+    preloader.delete();
+    productList.render(showcaseEl);
+    resolve();
+  });
+
+  moneyForm.turnOn();
+}());
 
 moneyForm.addSubmitListener(async () => {
   try {

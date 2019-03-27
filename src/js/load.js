@@ -27,7 +27,6 @@ export default function laod(preloader) {
       }, 600);
     });
 
-
     resolve();
   });
 }
