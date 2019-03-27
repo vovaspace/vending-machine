@@ -1,9 +1,14 @@
 import gulp from 'gulp';
-import ghpages from 'gulp-gh-pages';
+import ghPages from 'gulp-gh-pages';
+
+
+const path = {
+  build: 'build/'
+};
 
 gulp.task('deploy:push', () => (
-  gulp.src(['build/**/*', '!build/robots.txt'])
-    .pipe(ghpages({ branch: 'build' }))
+  gulp.src(path.build)
+    .pipe(ghPages())
 ));
 
 gulp.task('deploy', gulp.series(

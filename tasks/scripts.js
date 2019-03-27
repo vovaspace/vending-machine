@@ -1,7 +1,11 @@
 import gulp from 'gulp';
 import path from 'path';
-import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
+import ReplacePlugin from 'webpack-plugin-replace';
+import notify from 'gulp-notify';
+
+const isDev = process.env.NODE_ENV !== 'production';
+const productionPath = '/vending-machine';
 
 gulp.task('scripts', () => (
   gulp.src('./src/js/app.js')
@@ -25,7 +29,20 @@ gulp.task('scripts', () => (
       },
       externals: {
         focusVisible: 'focus-visible'
-      }
+      },
+      plugins: [
+        new ReplacePlugin({
+          values: {
+            '!%{PRODUCTION-PATH}': isDev ? '' : productionPath
+          }
+        })
+      ]
     }))
+    .on('error', notify.onError(error => (
+      {
+        title: 'JS',
+        message: error.message
+      }
+    )))
     .pipe(gulp.dest('./build/js/'))
 ));

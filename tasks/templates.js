@@ -1,20 +1,24 @@
 import gulp from 'gulp';
 import pug from 'gulp-pug';
 import notify from 'gulp-notify';
+import replace from 'gulp-string-replace';
 
 import fs from 'fs';
 
-gulp.task('templates', () => {
-  const path = {
-    pages: [
-      'src/views/**/*.pug',
-      '!src/views/_*.pug'
-    ],
-    locals: 'src/views/_content.json',
-    build: 'build/'
-  };
+const path = {
+  pages: [
+    'src/views/**/*.pug',
+    '!src/views/_*.pug'
+  ],
+  locals: 'src/views/_content.json',
+  build: 'build/',
+  prodPath: '/vending-machine'
+};
 
-  return gulp.src(path.pages)
+const isDev = process.env.NODE_ENV !== 'production';
+
+gulp.task('templates', () => (
+  gulp.src(path.pages)
     .pipe(pug({
       locals: JSON.parse(fs.readFileSync(path.locals, 'utf-8')),
       pretty: '\t'
@@ -25,5 +29,6 @@ gulp.task('templates', () => {
         message: error.message
       }
     )))
-    .pipe(gulp.dest(path.build));
-});
+    .pipe(replace('!%{PRODUCTION-PATH}', isDev ? '' : path.prodPath))
+    .pipe(gulp.dest(path.build))
+));

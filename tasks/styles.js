@@ -7,6 +7,7 @@ import autoprefixer from 'gulp-autoprefixer';
 import gcmq from 'gulp-group-css-media-queries';
 import csso from 'gulp-csso';
 import concatCss from 'gulp-concat-css';
+import replace from 'gulp-string-replace';
 
 const path = {
   entry: 'src/style/main.scss',
@@ -14,8 +15,11 @@ const path = {
   src: ['src/blocks/**/**/*.scss', '!src/style/**'],
   foundation: [
     './node_modules/normalize.css/normalize.css'
-  ]
+  ],
+  prodPath: '/vending-machine'
 };
+
+const isDev = process.env.NODE_ENV !== 'production';
 
 gulp.task('styles', () => (
   gulp.src(path.entry)
@@ -32,6 +36,7 @@ gulp.task('styles', () => (
     }))
     .pipe(rename('style.css'))
     .pipe(gcmq())
+    .pipe(replace('!%{PRODUCTION-PATH}', isDev ? '' : path.prodPath))
     .pipe(gulp.dest(path.build))
     .pipe(rename({ suffix: '.min' }))
     .pipe(csso())

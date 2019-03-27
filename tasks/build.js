@@ -8,6 +8,5 @@ gulp.task('build', gulp.series(
   'styles',
   'styles:foundation',
   'templates',
-  'scripts',
-  //'scripts:foundation'
+  'scripts'
 ));
