@@ -3,7 +3,7 @@ import ghPages from 'gulp-gh-pages';
 
 
 const path = {
-  build: 'build/'
+  build: 'build/**/*.*'
 };
 
 gulp.task('deploy:push', () => (

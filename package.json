@@ -8,6 +8,7 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
+    "production": "cross-env NODE_ENV=production gulp build",
     "clean": "gulp clean",
     "deploy": "cross-env NODE_ENV=production gulp deploy",
     "make-block": "babel-node scripts/make-block.js",
