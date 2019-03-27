@@ -118,6 +118,7 @@ choiceForm.addSubmitListener(async () => {
       }
 
       moneyForm.turnOn();
+      moneyForm.setFocus();
     });
   } catch (error) {
     choiceForm.showMessage(error.message);
