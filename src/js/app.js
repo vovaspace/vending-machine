@@ -59,6 +59,7 @@ const preloader = new Preloader();
   });
 
   moneyForm.turnOn();
+  moneyForm.setFocus();
 }());
 
 moneyForm.addSubmitListener(async () => {
@@ -75,6 +76,7 @@ moneyForm.addSubmitListener(async () => {
     if (response >= productList.maxPrice) {
       moneyForm.changeLabelText(`Inserted money: ${response} R. Enough for any product.`);
       moneyForm.disable();
+      choiceForm.setFocus();
     } else {
       moneyForm.changeLabelText(`Inserted money: ${response} R`);
     }

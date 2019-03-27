@@ -100,6 +100,10 @@ export default class Form {
     });
   }
 
+  setFocus() {
+    this._inputEl.focus();
+  }
+
   get value() {
     return this._inputEl.value;
   }
