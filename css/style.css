@@ -130,7 +130,6 @@ button {
 }
 
 .output__output {
-  overflow-y: scroll;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 calc(50% - 0.25rem);
   flex: 0 0 calc(50% - 0.25rem);
@@ -181,6 +180,8 @@ button {
   -o-transition: transform 200ms ease-in;
   transition: transform 200ms ease-in;
   transition: transform 200ms ease-in, -webkit-transform 200ms ease-in;
+  -webkit-animation: indication 1s infinite ease-in-out;
+  animation: indication 1s infinite ease-in-out;
   -webkit-box-shadow: 0 0.125rem 0.25rem 0 rgba(56, 254, 58, 0.2);
   box-shadow: 0 0.125rem 0.25rem 0 rgba(56, 254, 58, 0.2);
 }
@@ -189,6 +190,42 @@ button {
   -webkit-transform: scale(1.05);
   -ms-transform: scale(1.05);
   transform: scale(1.05);
+  -webkit-animation: none;
+  animation: none;
+}
+
+@-webkit-keyframes indication {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes indication {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 }
 
 .page {
