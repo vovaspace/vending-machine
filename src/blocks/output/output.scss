@@ -15,8 +15,6 @@
 
 
   &__output {
-    overflow-y: scroll;
-
     flex: 0 0 calc(50% - #{rem(4)}); /* stylelint-disable-line function-calc-no-invalid */
 
     height: rem(280);
@@ -63,12 +61,29 @@
     cursor: pointer;
 
     transition: transform 200ms ease-in;
+    animation: indication 1s infinite ease-in-out;
 
     box-shadow: 0 rem(2) rem(4) 0 rgba(#38fe3a, 0.2);
 
 
     &:hover {
       transform: scale(1.05);
+      animation: none;
     }
+  }
+}
+
+@keyframes indication {
+
+  from {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  to {
+    transform: scale(1);
   }
 }
