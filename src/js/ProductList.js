@@ -61,6 +61,16 @@ export default class ProductList {
     Object.values(this._products).forEach(product => product.unsetActive());
   }
 
+  get maxPrice() {
+    let maxPrice = 0;
+    Object.values(this._products).forEach((product) => {
+      if (product.price > maxPrice) {
+        maxPrice = product.price;
+      }
+    });
+    return maxPrice;
+  }
+
   get arr() {
     return Object.values(this._products).sort();
   }

@@ -13,10 +13,10 @@ import render from './render';
 const products = [
   new Product(1, 'Cola', 'Cold drink', 130, 50),
   new Product(2, 'Evian', 'Water', 90, 50),
-  new Product(3, 'Durex', 'Condoms', 400, 50),
-  new Product(4, 'Shickers', 'Choco', 105, 50),
-  new Product(5, 'Wagon Wheels', 'Choco', 155, 50),
-  new Product(6, 'WTF, Alice?', 'I don\'t know', 100, 1),
+  new Product(3, 'Durex', 'Condoms', 600, 50),
+  new Product(4, 'Snickers', 'Choco bar', 105, 50),
+  new Product(5, 'Wagon Wheels', 'Choco cookies', 165, 50),
+  new Product(6, 'WTF, Alice?', 'I don\'t know', 200, 1),
   new Product(7, 'Fanta', 'Cold drink', 130, 50)
 ];
 const productList = new ProductList(products);
@@ -33,7 +33,7 @@ const moneyForm = new Form(
   'Insert banknotes...',
   'Available banknotes: 50, 100,  <br>200, 500 or 1000 R. <br>The machine gives change <br>in 1, 2, 5 and 10 R coins.'
 );
-const choiceForm = new Form('Choice product...');
+const choiceForm = new Form('Choose product...');
 const output = new Output();
 
 const preloader = new Preloader();
@@ -53,12 +53,17 @@ moneyForm.addSubmitListener(async () => {
 
     productList.arr.forEach((product) => {
       if (product.price <= currentBanknotes.sum) {
-        choiceForm.turnOn('Choice product', '...');
+        choiceForm.turnOn();
         product.setActive();
       }
     });
 
-    moneyForm.changeLabelText(`Inserted money: ${response} R`);
+    if (response >= productList.maxPrice) {
+      moneyForm.changeLabelText(`Inserted money: ${response} R. Enough for any product.`);
+      moneyForm.disable();
+    } else {
+      moneyForm.changeLabelText(`Inserted money: ${response} R`);
+    }
   } catch (error) {
     moneyForm.showMessage(error.message);
   }
