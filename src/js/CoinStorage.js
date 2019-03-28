@@ -11,9 +11,9 @@ export default class CoinStorage {
   decreaseBy(num) {
     return new Promise((resolve) => {
       const change = calculateChange(num, this.obj);
-      const keys = Object.keys(change);
+      const keys = Object.keys(change.change);
       keys.forEach((key) => {
-        this[`_c${key}`] -= change[key];
+        this[`_c${key}`] -= change.change[key];
       });
 
       if (change.response) {

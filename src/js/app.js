@@ -22,7 +22,7 @@ const productList = new ProductList(products);
 const banknotes = new BanknoteStorage();
 const currentBanknotes = new BanknoteStorage();
 
-const coins = new CoinStorage(200, 200, 500, 1000);
+const coins = new CoinStorage(200, 200, 2, 800);
 
 const showcaseEl = document.getElementById('showcase');
 const controlPanelEl = document.getElementById('control-panel');
