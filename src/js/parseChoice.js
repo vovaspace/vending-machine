@@ -1,4 +1,4 @@
-export default function parseChoice(choice, products) {
+export default function parseChoice(choice, products, moneySum) {
   return new Promise((resolve, reject) => {
     const choiceId = parseInt(choice, 10);
 
@@ -9,7 +9,7 @@ export default function parseChoice(choice, products) {
     const ids = [];
 
     products.forEach((product) => {
-      if (product.id === choiceId) {
+      if (product.id === choiceId && product.price <= moneySum) {
         resolve(product);
       }
 

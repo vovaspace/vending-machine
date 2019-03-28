@@ -87,7 +87,7 @@ moneyForm.addSubmitListener(async () => {
 
 choiceForm.addSubmitListener(async () => {
   try {
-    const product = await parseChoice(choiceForm.value, productList.arr);
+    const product = await parseChoice(choiceForm.value, productList.arr, currentBanknotes.sum);
     product.decreaseCount(1);
 
     const changeVal = currentBanknotes.sum - product.price;
