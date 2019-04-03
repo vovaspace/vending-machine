@@ -10,12 +10,12 @@ export default function laod(preloader) {
     });
 
     // Fonts load spechialy font by font.
-    const monacoFont = new FontFace('Monaco', 'url(!%{PRODUCTION-PATH}/fonts/Monaco.woff)');
+    const monacoFont = new FontFace('Monaco', 'url(/fonts/Monaco.woff)');
     await monacoFont.load();
     document.fonts.add(monacoFont);
     preloader.setProgress(60);
 
-    const ptSansFont = new FontFace('PT Sans', 'url(!%{PRODUCTION-PATH}/fonts/PTSans-Regular.woff)');
+    const ptSansFont = new FontFace('PT Sans', 'url(/fonts/PTSans-Regular.woff)');
     await ptSansFont.load();
     document.fonts.add(ptSansFont);
     preloader.setProgress(80);
