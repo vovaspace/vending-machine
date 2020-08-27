@@ -1,6 +1,8 @@
-# Vending Machine
+# Vending Machine 'Bob'
 
-Привет, меня зовут Вендинговая Машина!
+Привет, меня зовут Вендинговая Машина «Боб»!
+
+Когда-то давно я был упражнением на создание приложения без ui-библиотеки, а сейчас просто покоюсь в архиве.
 
  Я умею:
 1. Принимать купюры;
@@ -12,4 +14,4 @@
 
 Внесите купюры, написав номинал. Введите номер продукта. Заберите продукт и сдачу, кликнув по продукту.
 
-Попробуй меня в действии — [vovaspace.github.io/vending-machine](https://vovaspace.github.io/vending-machine).
+Попробуй меня в действии — [vovaspace.github.io/vending-machine-bob](https://vovaspace.github.io/vending-machine-bob).
